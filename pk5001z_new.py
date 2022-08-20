@@ -1,7 +1,7 @@
-# used to generate a list of possible passwords for the PK5001Z
-# with serial numbers S13 and newer.
+# Generates a list of possible passwords for the PK5001Z
+# Works with serial numbers S13 and newer.
 # ESSID is CenturyLinkXXXX
-# common macs for these modems start with  
+# common macs for these modems start with:
 # FC:F5:28
 # EC:43:F6
 # 28:28:5D
