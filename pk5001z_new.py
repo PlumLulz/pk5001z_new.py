@@ -68,9 +68,9 @@ def pk5001z_new(mac, length):
 	filler = 'AD3EHKL6V5XY9PQRSTUGN2CJW4FM7ZL1'
 	bad_chars = '01259'
 
-	for i in range(1, 14):
-		if hex_digest[i-1] == hex_digest[i]:
-			hex_digest = "%s%s%s" % (hex_digest[:i], 0, hex_digest[i+1:])
+	# for i in range(1, 14):
+	# 	if hex_digest[i-1] == hex_digest[i]:
+	# 		hex_digest = "%s%s%s" % (hex_digest[:i], 0, hex_digest[i+1:])
 
 	uo_count = 0
 	badchar_positions = []
@@ -99,6 +99,13 @@ def pk5001z_new(mac, length):
 			replacement = filler[char_value]
 			key = "%s%s%s" % (key[:badchar_positions[char_pos]], replacement, key[badchar_positions[char_pos]+1:])
 			list_number = math.floor(list_number / current_mod)
+		for n in range(1, 14):
+			if key[n-1] == key[n]:
+				if key[n-1] != "A" and key[n-1] != "a":
+					key = "%s%s%s" % (key[:n], "a", key[n+1:])
+				else:
+					key = "%s%s%s" % (key[:n], "d", key[n+1:])
+
 		print(key.lower())
 
 parser = argparse.ArgumentParser(description='PK5001Z Keygen (for newer modems)')
